@@ -62,14 +62,12 @@ app.get("/invoices", (req, res) => {
 
 app.post("/createInvoice", async (req, res) => {
   const sql1 = "INSERT INTO Invoice SET ?";
-  const sql2 = "INSERT INTO InvoiceProduct VALUES ?";
-
-  const arrayOfPromises = [promisePool.query("SELECT ? AS ")];
 
   // const newDate = new Date();
   // console.log(newDate.toISOString().split("T")[0]);
 
   const invoiceHeader = {
+    number: req.body.number,
     date: req.body.date,
     clientId: req.body.clientId,
     discount: req.body.discount,
